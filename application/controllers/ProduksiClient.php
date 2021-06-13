@@ -773,8 +773,54 @@ function exportToExcel() {
     $baris = 6;
     $urutan = 1;
 
-    $produksi = json_decode($this->curl->simple_get($this->API));
-    foreach ( $produksi AS $isi ) {
+    $data['produksi'] = json_decode($this->curl->simple_get($this->API));
+
+    // ---------------------------------
+        // filter
+        $tanggal_interval = $this->input->get('interval-tanggal');
+      
+        // apakah user melakuan filter ?
+        if ( $tanggal_interval ) {
+
+            $pisah_waktu = explode('-', $tanggal_interval);
+
+            $tanggal_awal = strtotime($pisah_waktu[0]);
+            $tanggal_akhir= strtotime($pisah_waktu[1]);
+        }
+
+
+        $data_produksi = array();
+
+        // pre-processing
+        if ( count($data['produksi']) > 0 ) {
+
+            foreach ( $data['produksi'] AS $item ) {
+
+                $tanggal_produksi = strtotime( $item->tanggal );
+
+
+                // user melakukan filter
+                if ( !empty( $tanggal_interval ) ) {
+
+                    if ( $tanggal_produksi == $tanggal_awal && $tanggal_produksi == $tanggal_akhir ) { // apabila sorting hanya 1 hari
+
+                        array_push( $data_produksi, $item );
+                    } else if ( $tanggal_produksi >= $tanggal_awal && $tanggal_produksi <= $tanggal_akhir ) { // apabila memiliki interval waktu
+        
+                        array_push( $data_produksi, $item );
+                    }
+
+                } else { // user tidak menampilkan filter atau menampilkan keseluruhan
+
+                    array_push( $data_produksi, $item );
+                }
+            }
+        }
+
+        // end filter
+        // ---------------------------------
+
+    foreach ( $data_produksi AS $isi ) {
 
         // nomor
         $spreadsheet->setActiveSheetIndex(0)->setCellValue('A'.$baris, $urutan);
