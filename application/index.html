@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>403 Forbidden</title>
+</head>
+<body>
+
+<p>Directory access is forbidden.</p>
+
+</body>
+</html>
+
+<div class="form-group col-sm-4 text-center">
+	<?php if($this->session->userdata('level')!='admin'){redirect('login');};?>
+		<select id="soal_filter" class="form-control select2" style="width:100% !important">
+			<option value="all">Semua user</option>
+			<?php foreach ($user as $m) :?>
+				<option value="<?=$m->id?>"><?=$m->nama?></option>
+			<?php endforeach; ?>
+		</select>
+	<?php endif; ?>
+	<?php if($this->session->userdata('level')!='admin'){redirect('login');};?>
+	
+		<input id="id" value="<?=$user->nama;?>" type="text" readonly="readonly" class="form-control">
+	<?php endif; ?>
+</div>
