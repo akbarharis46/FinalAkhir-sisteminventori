@@ -59,7 +59,7 @@ class ProduksiClient extends CI_Controller
             $tanggal_akhir= strtotime($pisah_waktu[1]);
         }
 
-
+        
         $data_produksi = array();
 
         // pre-processing

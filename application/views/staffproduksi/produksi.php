@@ -153,7 +153,7 @@
                  ?>
                  </span> 
                  
-              <table id="tabel" class="table table-bordered">
+              <table id="tabel_stafproduksi" class="table table-bordered">
                 <thead>
                 <tr>
                   <th>NOMOR</th>
@@ -212,7 +212,13 @@
   
   		<!--begin::Page Scripts(used by this page)-->
       <script src="<?php echo base_url('assets')?>/assets/js/pages/crud/forms/widgets/bootstrap-daterangepicker.js"></script>
+      <script src="<?php echo base_url('assets')?>/assets/plugins/custom/datatables/datatables.bundle.js?v=7.2.8"></script>
+      <script>
+    
+    $('#tabel_stafproduksi').DataTable();
 
+</script>
+      
       <script>
       
       </script>
