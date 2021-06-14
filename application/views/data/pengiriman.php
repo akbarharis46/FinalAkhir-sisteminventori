@@ -153,7 +153,7 @@
                  ?>
                  </span> 
                  
-              <table id="tabel" class="table table-striped dataTable-table">
+              <table id="tabel-pengiriman" class="table table-striped dataTable-table">
                 <thead>
                 <tr>
                   <th data-sourtable="">NOMOR</th>
@@ -222,7 +222,12 @@
   
   		<!--begin::Page Scripts(used by this page)-->
       <script src="<?php echo base_url('assets')?>/assets/js/pages/crud/forms/widgets/bootstrap-daterangepicker.js"></script>
+      <script src="<?php echo base_url('assets')?>/assets/plugins/custom/datatables/datatables.bundle.js?v=7.2.8"></script>
 
+
+    <script>
+    
+          $('#tabel-pengiriman').DataTable();
       <script>
       
       </script>

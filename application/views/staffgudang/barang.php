@@ -179,7 +179,7 @@
                  ?>
                  </span> 
                  
-              <table id="tabel" class="table table-bordered">
+              <table id="tabel-barang" class="table table-bordered">
                 <thead>
                 <tr>
                   <th>No </th>
@@ -225,7 +225,12 @@
   <!-- /.content-wrapper -->
 
   <script src="<?php echo base_url('assets')?>/assets/js/pages/crud/forms/widgets/bootstrap-daterangepicker.js"></script>
+  <script src="<?php echo base_url('assets')?>/assets/plugins/custom/datatables/datatables.bundle.js?v=7.2.8"></script>
 
+
+<script>
+
+      $('#tabel-barang').DataTable();
 <script>
 
 </script>

@@ -180,7 +180,7 @@
                  ?>
                  </span> 
                  
-              <table id="tabel" class="table table-bordered">
+              <table id="tabel-barang" class="table table-bordered">
                 <thead>
                 <tr>
                   <th>No </th>
@@ -233,6 +233,6 @@
 
     <script>
     
-          $('#tabel-produksi').DataTable();
+          $('#tabel-barang').DataTable();
 
     </script>

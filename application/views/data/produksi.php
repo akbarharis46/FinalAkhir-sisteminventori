@@ -217,6 +217,3 @@ if($level !='admin' && ($level != 'Staff Produksi')){
 
     </script>
 
-<script>
-
-</script>

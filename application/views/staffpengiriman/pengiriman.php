@@ -155,7 +155,7 @@
                  ?>
                  </span> 
                  
-              <table id="tabel" class="table table-bordered">
+              <table id="tabel-pengiriman" class="table table-bordered">
                 <thead>
                 <tr>
                   <th>NOMOR</th>
@@ -223,7 +223,12 @@
   <!-- /.content-wrapper -->
 
   <script src="<?php echo base_url('assets')?>/assets/js/pages/crud/forms/widgets/bootstrap-daterangepicker.js"></script>
+  <script src="<?php echo base_url('assets')?>/assets/plugins/custom/datatables/datatables.bundle.js?v=7.2.8"></script>
 
+
+<script>
+
+      $('#tabel-pengiriman').DataTable();
 <script>
 
 </script>
