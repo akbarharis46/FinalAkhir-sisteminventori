@@ -109,7 +109,52 @@ class PengirimanClient extends CI_Controller
     public function indexstaffpengiriman()
     {
         $data['pengiriman'] = json_decode($this->curl->simple_get($this->API));
+
+        // ---------------------------------
+    // filter
+    $tanggal_interval = $this->input->get('interval-tanggal');
+  
+    // apakah user melakuan filter ?
+    if ( $tanggal_interval ) {
+
+        $pisah_waktu = explode('-', $tanggal_interval);
+
+        $tanggal_awal = strtotime($pisah_waktu[0]);
+        $tanggal_akhir= strtotime($pisah_waktu[1]);
+    }
+
+
+    $data_pengiriman = array();
+
+    // pre-processing
+    if ( count($data['pengiriman']) > 0 ) {
+
+        foreach ( $data['pengiriman'] AS $item ) {
+
+            $tanggal_pengiriman = strtotime( $item->tanggal );
+
+
+            // user melakukan filter
+            if ( !empty( $tanggal_interval ) ) {
+
+                if ( $tanggal_pengiriman == $tanggal_awal && $tanggal_pengiriman == $tanggal_akhir ) { // apabila sorting hanya 1 hari
+
+                    array_push( $data_pengiriman, $item );
+                } else if ( $tanggal_pengiriman >= $tanggal_awal && $tanggal_pengiriman <= $tanggal_akhir ) { // apabila memiliki interval waktu
+    
+                    array_push( $data_pengiriman, $item );
+                }
+
+            } else { // user tidak menampilkan filter atau menampilkan keseluruhan
+
+                array_push( $data_pengiriman, $item );
+            }
+        }
+    }
+
         $data['title'] = "pengiriman";
+        $data['pengiriman']   = (object) $data_pengiriman; // konversi array ke object
+        
         $this->load->view('header1');
         $this->load->view('staffpengiriman/pengiriman', $data);
         $this->load->view('barpengiriman');
