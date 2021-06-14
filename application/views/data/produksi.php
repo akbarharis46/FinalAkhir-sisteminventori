@@ -1,4 +1,7 @@
-<?php if($this->session->userdata('level')!='admin' && 'Staff Produksi'){redirect('login');};?>
+<?php 
+$level = $this->session->userdata('level');
+if($level !='admin' && ($level != 'Staff Produksi')){
+  redirect('login');};?>
 
 <div class="cc">
 
@@ -94,9 +97,9 @@
                         </span>
                       </a>
                       <a class="btn btn-success" href="<?php echo site_url('produksiclient/exportToExcel?interval-tanggal='. $filter_data_tanggal); ?>">
-                        <i class="fa fa-file-pdf"></i>
+                        <i class="fa fa-file-excel"></i>
                         <span>
-                          Cetak Keseluruhan
+                          Cetak Exel
                         </span>
                       </a>
                   
