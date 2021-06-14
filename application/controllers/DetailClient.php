@@ -93,7 +93,49 @@ class DetailClient extends CI_Controller
     public function indexpengiriman()
     {
         $data['detail'] = json_decode($this->curl->simple_get($this->API));
+
+        $tanggal_interval = $this->input->get('interval-tanggal');
+
+        // apakah user melakuan filter ?
+        if ( $tanggal_interval ) {
+
+            $pisah_waktu = explode('-', $tanggal_interval);
+
+            $tanggal_awal = strtotime($pisah_waktu[0]);
+            $tanggal_akhir= strtotime($pisah_waktu[1]);
+        }
+
+        $data_detail = array();
+
+        // pre-processing
+        if ( count($data['detail']) > 0 ) {
+
+            foreach ( $data['detail'] AS $item ) {
+
+                $tanggal_detail = strtotime( $item->tanggal_diterima);
+                
+
+                // user melakukan filter
+                if ( !empty( $tanggal_interval ) ) {
+
+                    if ( $tanggal_detail == $tanggal_awal && $tanggal_detail == $tanggal_akhir ) { // apabila sorting hanya 1 hari
+
+                        array_push( $data_detail, $item );
+                    } else if ( $tanggal_detail >= $tanggal_awal && $tanggal_detail <= $tanggal_akhir ) { // apabila memiliki interval waktu
+        
+                        array_push( $data_detail, $item );
+                    }
+
+                } else { // user tidak menampilkan filter atau menampilkan keseluruhan
+
+                    array_push( $data_detail, $item );
+                }
+            }
+        }
+
         $data['title'] = "Kategori";
+        $data['detail']   = (object) $data_detail; // konversi array ke object
+        
         $this->load->view('header1');
         $this->load->view('staffpengiriman/barang_keluar', $data);
         $this->load->view('barpengiriman');

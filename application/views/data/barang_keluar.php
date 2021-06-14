@@ -37,13 +37,13 @@
                 <div class="col-md-3">
 
                   
-                  <a class='btn btn-primary' href="<?php echo site_url(); ?>DetailClient/post">
+                  <!-- <a class='btn btn-primary' href="<?php echo site_url(); ?>DetailClient/post">
                   <i class ="fa fa-plus" ></i>
                   <span >
                       Tambah
                   </span>
                   </button>
-                  </a>
+                  </a> -->
                   
 
                 </div>
