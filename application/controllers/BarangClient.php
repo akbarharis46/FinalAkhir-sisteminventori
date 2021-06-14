@@ -31,7 +31,53 @@ class BarangClient extends CI_Controller
     public function index()
     {
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
+        
+        // filter
+        $tanggal_interval = $this->input->get('interval-tanggal');
+      
+        // apakah user melakuan filter ?
+        if ( $tanggal_interval ) {
+
+            $pisah_waktu = explode('-', $tanggal_interval);
+
+            $tanggal_awal = strtotime($pisah_waktu[0]);
+            $tanggal_akhir= strtotime($pisah_waktu[1]);
+        }
+        
+      
+        
+        $data_barang =array();
+
+    // pre-processing
+    if ( count($data['barang']) > 0 ) {
+
+        foreach ( $data['barang'] AS $item ) {
+
+            $tanggal_barang = strtotime( $item->tanggal );
+
+
+           
+            if ( !empty( $tanggal_interval ) ) {
+
+                if ( $tanggal_barang == $tanggal_awal && $tanggal_barang == $tanggal_akhir ) { 
+
+                    array_push( $data_barang, $item );
+                } else if ( $tanggal_barang >= $tanggal_awal && $tanggal_barang <= $tanggal_akhir ) { 
+
+                    array_push( $data_barang, $item );
+                }
+
+            } else { 
+
+                array_push( $data_barang, $item );
+            }
+        }
+    }
+
+
         $data['title'] = "barang";
+        $data['barang']   = (object) $data_barang; // konversi array ke object
+
         $this->load->view('header0');
         $this->load->view('data/barang', $data);
         $this->load->view('baradmin');
@@ -52,7 +98,53 @@ class BarangClient extends CI_Controller
     public function indexgudang()
     {
         $data['barang'] = json_decode($this->curl->simple_get($this->API));
+
+        // filter
+        $tanggal_interval = $this->input->get('interval-tanggal');
+      
+        // apakah user melakuan filter ?
+        if ( $tanggal_interval ) {
+
+            $pisah_waktu = explode('-', $tanggal_interval);
+
+            $tanggal_awal = strtotime($pisah_waktu[0]);
+            $tanggal_akhir= strtotime($pisah_waktu[1]);
+        }
+        
+      
+        
+        $data_barang =array();
+
+    // pre-processing
+    if ( count($data['barang']) > 0 ) {
+
+        foreach ( $data['barang'] AS $item ) {
+
+            $tanggal_barang = strtotime( $item->tanggal );
+
+
+           
+            if ( !empty( $tanggal_interval ) ) {
+
+                if ( $tanggal_barang == $tanggal_awal && $tanggal_barang == $tanggal_akhir ) { 
+
+                    array_push( $data_barang, $item );
+                } else if ( $tanggal_barang >= $tanggal_awal && $tanggal_barang <= $tanggal_akhir ) { 
+
+                    array_push( $data_barang, $item );
+                }
+
+            } else { 
+
+                array_push( $data_barang, $item );
+            }
+        }
+    }
+
+
         $data['title'] = "barang";
+        $data['barang']   = (object) $data_barang; // konversi array ke object
+        
         $this->load->view('header1');
         $this->load->view('staffgudang/barang', $data);
         $this->load->view('bargudang');
