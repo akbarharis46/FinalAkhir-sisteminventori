@@ -34,15 +34,12 @@
                 <div class="row">
                 <div class="col-md-3">
 
-                  
-                  <a class='btn btn-primary' href="<?php echo site_url(); ?>BarangClient/postbarang">
-                  <i class ="fa fa-plus" ></i>
+                <button class='btn btn-primary' type='button' data-toggle="modal" data-target="#exampleModal">
+                  <i class="fa fa-plus"></i>
                   <span >
                       Tambah
                   </span>
                   </button>
-                  </a>
-                  
 
                 </div>
 
@@ -100,6 +97,7 @@
                       </a>
                   
                   </div>
+
 
 
                   
@@ -179,7 +177,7 @@
                  ?>
                  </span> 
                  
-              <table id="tabel-barang" class="table table-bordered">
+              <table id="tabel" class="table table-bordered">
                 <thead>
                 <tr>
                   <th>No </th>
@@ -234,7 +232,8 @@
 
 <script>
 
-      $('#tabel-barang').DataTable();
-<script>
+      $('#tabel').DataTable();
+
+</script>
 
 </script>

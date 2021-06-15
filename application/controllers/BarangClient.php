@@ -239,7 +239,7 @@ class BarangClient extends CI_Controller
         $count = $this->input->post('count');
         
 
-        $total = 0;
+        // $total = 0;
         for ($i=0; $i < $count; $i++) { 
 
             $nama_kategori = $this->input->post('nama_kategori')[$i];
