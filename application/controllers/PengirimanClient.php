@@ -230,7 +230,7 @@ class PengirimanClient extends CI_Controller
       {
           $data = array(
               'nama_pengirim'                  => $this->input->post('nama_pengirim'),
-              'nomorhp'                        => $this->input->post('nomorhp'),
+              'nomorhp'                         => $this->input->post('nomorhp'),
               'tujuan'                         => $this->input->post('tujuan'),
               'jumlah'                         => $this->input->post('jumlah'),
               'jenis_kendaraan'                => $this->input->post('jenis_kendaraan'),
@@ -516,17 +516,17 @@ class PengirimanClient extends CI_Controller
         
         $update =  $this->curl->simple_put($this->API, $data, array(CURLOPT_BUFFERSIZE => 10));
 
-      // add notify
-      $msg = "Data Pengiriman Sudah Sampai  ". $tujuan;
-      $dataNotify = [
+    //   // add notify
+    //   $msg = "Data Pengiriman Sudah Sampai  ". $tujuan_pengiriman;
+    //   $dataNotify = [
 
-          'receiver'  => "admin",
-          'nama'      => "Proses Pengiriman",
-          'notes'     => "Pengiriman Barang dengan tujuan  ".$tujuan. "Nama Driver ". $this->input->post('nama_pengirim')."Dengan Nomor Kendaraan ".$this->input->post('nomor_kendaraan'), "Proses Pengiriman".$this->input->post('status_pengiriman'),
-          'url'       => base_url('produksiclient'),
-      ];
-      addNewNotify($dataNotify, $msg);
-      redirect('DetailClient/indexstaffpengiriman');
+    //       'receiver'  => "admin",
+    //       'nama'      => "Proses Pengiriman",
+    //       'notes'     => "Pengiriman Barang dengan tujuan".$tujuan_pengiriman. "Nama Driver". $this->input->post('nama_pengirim')."Dengan Nomor Kendaraan ".$this->input->post('nomor_kendaraan'), "Proses Pengiriman".$this->input->post('status_pengiriman'),
+    //       'url'       => base_url('produksiclient'),
+    //   ];
+    //   addNewNotify($dataNotify, $msg);
+    //   redirect('DetailClient/indexstaffpengiriman');
 
     //   var_dump($insert);
     //   exit;

@@ -76,7 +76,7 @@
                         
                             <div class="form-group">
                                 <label for="tanggal_diterima">Tanggal Barang Sampai :</label>
-                                <input type="date" style="margin-left:66px;width:20%;display:inline;" class="form-control form_datetime" id="tanggal_diterima" name="tanggal_diterima" required  >
+                                <input type="date" style="margin-left:66px;width:20%;display:inline;" class="form-control" id="tanggal_diterima" name="tanggal_diterima" required  >
                             </div>
 
           </select>
