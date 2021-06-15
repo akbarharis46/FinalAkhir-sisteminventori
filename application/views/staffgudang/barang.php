@@ -35,7 +35,7 @@
                 <div class="col-md-3">
 
                   
-                  <a class='btn btn-primary' href="<?php echo site_url(); ?>BarangClient/post">
+                  <a class='btn btn-primary' href="<?php echo site_url(); ?>BarangClient/postbarang">
                   <i class ="fa fa-plus" ></i>
                   <span >
                       Tambah
@@ -186,6 +186,8 @@
                   <th>Tanggal</th>
                   <th>Nama Barang</th>
                   <th>Jumlah Barang Masuk</th>
+          
+
                   <th>Aksi</th>
                  
                 </tr>
@@ -199,6 +201,8 @@
                         <td><?php echo $rows->tanggal; ?> </td>
                         <td><?php echo $rows->nama_kategori; ?> </td>
                         <td><?php echo $rows->total; ?>
+                    
+
                             </td>
                     
                         <td>

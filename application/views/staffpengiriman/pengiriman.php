@@ -37,7 +37,7 @@
                 <div class="col-md-3">
 
                   
-                  <a class='btn btn-primary' href="<?php echo site_url(); ?>PengirimanClient/post">
+                  <a class='btn btn-primary' href="<?php echo site_url(); ?>PengirimanClient/postpengiriman">
                   <i class ="fa fa-plus" ></i>
                   <span >
                       Tambah
