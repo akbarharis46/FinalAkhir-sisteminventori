@@ -36,14 +36,14 @@
                 <div class="col-md-3">
 
                   
-                  <a class='btn btn-primary' href="<?php echo site_url(); ?>BarangClient/post">
-                  <i class ="fa fa-plus" ></i>
+                  <button class='btn btn-primary' type='button' data-toggle="modal" data-target="#exampleModal">
+                  <i class="fa fa-plus"></i>
                   <span >
                       Tambah
                   </span>
                   </button>
-                  </a>
-                  
+
+ 
 
                 </div>
 
